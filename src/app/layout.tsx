@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/sections/Header";
 import Sidebar from "@/sections/Sidebar";
 import { ClerkProvider } from "@clerk/nextjs";
+import RecommendUser from "@/sections/RecommendUser";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
           <main>
             {children}
           </main>
+          <RecommendUser />
         </div>
         
       </body>

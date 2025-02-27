@@ -17,7 +17,6 @@ const Sidebar = async() => {
   if(!currentUser){
     return
   }
-  console.log(currentUser);
   return (
     <div>
         <p>{currentUser.name}</p>
