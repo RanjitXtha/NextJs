@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import './globals.css';
+import React from "react";
 import Header from "@/sections/Header";
 import Sidebar from "@/sections/Sidebar";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -30,11 +31,12 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        
-        <div>
+       
+        <div className="pt-[4rem]">
+    
           <Sidebar />
           <main>
             {children}

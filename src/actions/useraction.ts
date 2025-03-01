@@ -1,6 +1,7 @@
 "use server"
 import { prisma } from '@/lib/prisma';
 import { auth, currentUser } from '@clerk/nextjs/server';
+import { revalidatePath } from 'next/cache';
 
 export const RegisterUserToDatabase =async()=>{
     const user = await currentUser();
@@ -149,5 +150,5 @@ export const ToggleFollow = async(sentId:string)=>{
   }
 
   console.log("Follow Toggled");
-
+  revalidatePath("/")
 }

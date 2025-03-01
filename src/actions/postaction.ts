@@ -23,3 +23,47 @@ export const CreateUserPost = async(content:string , image:File | null)=>{
 }
 
 }
+
+export const GetPosts = async()=>{
+   const posts = await prisma.post.findMany({
+      orderBy:{
+         createdAt:"desc"
+      },
+      include:{
+         user:{
+            select:{
+               id:true,
+               name:true,
+               image:true
+            }
+         },
+         comments:{
+            include:{
+               user:{
+                  select:{
+                     id:true,
+                     name:true,
+                     image:true
+                  }
+               }
+            },
+            orderBy:{
+               createdAt:"asc"
+            }
+         },
+         likes:{
+            select:{
+               userId:true
+            }
+         },
+         _count:{
+            select:{
+               comments:true,
+               likes:true
+            }
+         }
+      }
+   })
+
+   return posts;
+}

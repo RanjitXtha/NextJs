@@ -3,6 +3,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react'
 import Image from 'next/image';
 import { CreateUserPost } from '@/actions/postaction';
 import { auth } from '@clerk/nextjs/server';
+import "../app/globals.css";
 
 const CreatePost = () => {
     const [content , setContent] = useState("");
@@ -26,7 +27,6 @@ const CreatePost = () => {
         console.log("Content is required");
         return;
       }
-     
       CreateUserPost(content , image);
     }
 
@@ -34,7 +34,7 @@ const CreatePost = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <textarea  placeholder='Type Something' onChange={(e)=>setContent(e.target.value)} />
-          <label htmlFor="image-button" className='text-lg font-extrabold text-red-600'>Uploadd</label>
+          <label htmlFor="image-button" className='text-lg  text-red-600'>Uploadd</label>
         <input type="file" id="image-button" accept="image/*" onChange={handleImage} />
         {preview && <Image src={preview} alt="uploaded-image" width={50} height={50} />}
         <button type="submit" className='bg-blue-500 text-white rounded-md p-2'>Post</button>
